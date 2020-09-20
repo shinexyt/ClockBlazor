@@ -21,11 +21,11 @@ jobs:
 
     # publishes Blazor project to the release-folder
     - name: Publish .NET Core Project
-      run: dotnet publish WebAssemblyTest.csproj -c Release -o release --nologo
+      run: dotnet publish ClockBlazor.csproj -c Release -o release --nologo
     
-    # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
-    - name: Change base-tag in index.html from / to WebAssemblyTest
-      run: sed -i 's/<base href="\/" \/>/<base href="\/WebAssemblyTest\/" \/>/g' release/wwwroot/index.html
+    # changes the base-tag in index.html from '/' to 'ClockBlazor' to match GitHub Pages repository subdirectory
+    - name: Change base-tag in index.html from / to ClockBlazor
+      run: sed -i 's/<base href="\/" \/>/<base href="\/ClockBlazor\/" \/>/g' release/wwwroot/index.html
 
     # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
     - name: Add .nojekyll file
