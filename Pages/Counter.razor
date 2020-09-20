@@ -11,6 +11,16 @@
 
     private void IncrementCount()
     {
+        var timer = new System.Timers.Timer();
+        timer.Elapsed += timer_Elapsed;
+
+        timer.AutoReset = true;
+        timer.Enabled = true;
+        timer.Interval = 1000;
+    }
+    private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+    {
         currentCount++;
+        this.StateHasChanged();
     }
 }
