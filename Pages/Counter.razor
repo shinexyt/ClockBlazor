@@ -2,15 +2,16 @@
 
 <h1>Counter</h1>
 
-<p>Current count: @currentCount</p>
+<p>Elapsed time: @timeSpan</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
-    private int currentCount = 0;
-
+    private string timeSpan = "";
+    private DateTime startTime;
     private void IncrementCount()
     {
+        startTime = DateTime.Now;
         var timer = new System.Timers.Timer();
         timer.Elapsed += timer_Elapsed;
 
@@ -20,7 +21,7 @@
     }
     private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
     {
-        currentCount++;
+        timeSpan = (e.SignalTime - startTime).ToString(@"hh\:mm\:ss");
         this.StateHasChanged();
     }
 }
